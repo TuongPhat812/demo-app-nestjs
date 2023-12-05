@@ -36,13 +36,13 @@ import { MongooseModule } from '@nestjs/mongoose';
 			expandVariables: true,
 		}),
 		MongooseModule.forRootAsync({
-            imports: [ConfigModule],
-            useFactory: async (configService: ConfigService) => ({
-                uri: configService.get<string>('DATABASE_URI'),
-                dbName: configService.get<string>('DATABASE_NAME'),
-            }),
-            inject: [ConfigService],
-        }),
+			imports: [ConfigModule],
+			useFactory: async (configService: ConfigService) => ({
+				uri: configService.get<string>('DATABASE_URI'),
+				dbName: configService.get<string>('DATABASE_NAME'),
+			}),
+			inject: [ConfigService],
+		}),
 	],
 	controllers: [AppController],
 	providers: [AppService],
